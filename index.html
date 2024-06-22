@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Animation</title>
+    <style>
+        .parent {
+            display: flex;
+            justify-content: space-between;
+            transition: all 1s ease;
+        }
+        
+        .first-image, .second-image, .third-image {
+            transition: transform 1s ease;
+        }
+        
+        .animate .first-image {
+            transform: translateX(100px);
+        }
+        
+        .animate .second-image {
+            transform: translateX(-155px);
+        }
+        
+        .animate .third-image {
+            transform: translateX(-350px);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="./assets/MyPride.jpeg" alt="">
+
+    </div>
+    <div>
+        <img src="./assets/MyPride.jpeg" alt="">
+        
+    </div>
+    <div class="parent">
+        
+        <div class="first-image">
+            <img id="img1" src="./assets/logo-N.svg" alt="">
+        </div>
+        <div class="second-image">
+            <img id="img2" src="./assets/logo-four.svg" alt="">
+        </div>
+        <div class="third-image">
+            <img id="img3" src="./assets/logo-three.svg" alt="">
+        </div>
+    </div>
+    <div>
+        <img src="./assets/MyPride.jpeg" alt="">
+
+    </div>
+    <div>
+        <img src="./assets/MyPride.jpeg" alt="">
+        
+    </div>
+    <script>
+        // document.addEventListener("DOMContentLoaded", function() {
+        //     const parentDiv = document.querySelector(".parent");
+        //     const options = {
+        //         root: null,
+        //         rootMargin: "0px",
+        //         threshold: 0.5 // Adjust this threshold to suit your needs
+        //     };
+
+        //     const observer = new IntersectionObserver((entries, observer) => {
+        //         entries.forEach(entry => {
+        //             if (entry.isIntersecting) {
+        //                 parentDiv.classList.add("animate");
+        //             } else {
+        //                 parentDiv.classList.remove("animate");
+        //             }
+        //         });
+        //     }, options);
+
+        //     observer.observe(parentDiv);
+        // });
+        document.addEventListener("DOMContentLoaded", function() {
+    const parentDiv = document.querySelector(".parent");
+
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    function onScroll() {
+        if (isElementInViewport(parentDiv)) {
+            parentDiv.classList.add('animate');
+        }
+     else {
+            parentDiv.classList.remove('animate');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // Run on load in case the element is already in view
+});
+
+    
+    </script>
+</body>
+</html>

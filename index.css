@@ -1,0 +1,21 @@
+.parent {
+    display: flex;
+    justify-content: space-between;
+    transition: all 1s ease;
+}
+
+.first-image, .second-image, .third-image {
+    transition: transform 1s ease;
+}
+
+.animate .first-image {
+    transform: translateX(100px);
+}
+
+.animate .second-image {
+    transform: translateX(-200px);
+}
+
+.animate .third-image {
+    transform: translateX(-200px);
+}
